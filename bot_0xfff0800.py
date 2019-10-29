@@ -40,7 +40,7 @@ for mention in reversed(mentions):
     if '#helloworld' in mention.full_text.lower():
         print('Found helloworld!')
         print('Responding back..')
-        api.update_status('@' + mention.user.screen_name  + '#HelloWorld back to you!', mention.id)
+        api.update_status('@' + mention.user.screen_name  + 'I am a programmer robot to reply to your comment and tell you that the account holder is busy, please wait ..!', mention.id)
 
 while True:
     reply_to_tweets()
