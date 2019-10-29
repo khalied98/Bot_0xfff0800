@@ -29,19 +29,22 @@ def store_last_seen_id(last_seen_id, file_name):
 
 def reply_to_tweets():
     print('retrieving and replying to tweets...')
-last_seen_id = retrieve_last_seen_id(FILE_NAME)
-mentions = api.mentions_timeline(
-                    last_seen_id,
-                    tweet_mode='extended')
-for mention in reversed(mentions):
-    print(str(mention.id) + ' - ' + mention.full_text)
-    last_seen_id = mention.id
-    store_last_seen_id(last_seen_id, FILE_NAME)
-    if '#helloworld' in mention.full_text.lower():
-        print('Found helloworld!')
-        print('Responding back..')
-        api.update_status('@' + mention.user.screen_name  + 'I am a programmer robot to reply to your comment and tell you that the account holder is busy, please wait ..!', mention.id)
+    
+    last_seen_id = retrieve_last_seen_id(FILE_NAME)
+
+    mentions = api.mentions_timeline(
+                        last_seen_id,
+                        tweet_mode='extended')
+    for mention in reversed(mentions):
+        print(str(mention.id) + ' - ' + mention.full_text)
+        last_seen_id = mention.id
+        store_last_seen_id(last_seen_id, FILE_NAME)
+        if '#happybirthday' in mention.full_text.lower():
+            print('found #happybirthday!')
+            print('responding back...')
+            api.update_status('@' + mention.user.screen_name +
+                    ' Thankyou!', mention.id)
 
 while True:
     reply_to_tweets()
-    time.sleep(10)
+    time.sleep(15)
