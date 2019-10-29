@@ -1,12 +1,13 @@
+
 import tweepy
 import time
 
 print("this is my twitter bot")
 
 CONSUMER_KEY = '########################'
-CONSUMER_SECRET = '###########################'
-ACCESS_KEY = '######################################'
-ACCESS_SECRET = '####################################'
+CONSUMER_SECRET = '###############################'
+ACCESS_KEY = '################################'
+ACCESS_SECRET = '#######################################'
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -40,3 +41,7 @@ for mention in reversed(mentions):
         print('Found helloworld!')
         print('Responding back..')
         api.update_status('@' + mention.user.screen_name  + '#HelloWorld back to you!', mention.id)
+
+while True:
+    reply_to_tweets()
+    time.sleep(10)
